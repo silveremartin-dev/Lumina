@@ -1,0 +1,87 @@
+{
+  "title": {
+    "lumina": "Foro pa la Kitu Masa Duru (Chiffre 1)",
+    "fr": "Le Petit Prince (Chapitre 1)",
+    "en": "The Little Prince (Chapter 1)"
+  },
+  "sentences": [
+    {
+      "id": 1,
+      "lumina": "Kada Mina shili mito, Mina na sifi pana, safo sulo, ko fapo pa gafo zuru, keli nomi 'Foro Viva'.",
+      "fr": "Lorsque j'avais six ans (quand j'étais enfant), j'ai vu, une fois, une magnifique image, dans un livre sur la Forêt Vierge qui s'appelait 'Histoires Vécues'.",
+      "en": "When I was a child, I once saw a beautiful picture in a book about the primeval forest, called 'Living Stories'."
+    },
+    {
+      "id": 2,
+      "lumina": "La na fisi kafa kofa keli na kidi kafa kabo.",
+      "fr": "Elle représentait un serpent boa qui avalait un fauve (un animal éléphant).",
+      "en": "It showed a serpent animal that was eating a massive beast."
+    },
+    {
+      "id": 3,
+      "lumina": "La na fidi: 'La kafa kofa na kidi la kafa tota.'",
+      "fr": "On disait dans le livre : 'Les serpents boas avalent leur proie tout entière.'",
+      "en": "It said: 'The serpent animal ate the animal whole.'"
+    },
+    {
+      "id": 4,
+      "lumina": "La kafa kofa ne li lifi.",
+      "fr": "Le serpent ne peut plus bouger.",
+      "en": "The serpent animal does not move."
+    },
+    {
+      "id": 5,
+      "lumina": "La kafa kofa du shili somo pa pase tome, pa kidifi tota.",
+      "fr": "Et ils dorment pendant six mois pour leur digestion complète.",
+      "en": "The serpent animal sleeps for six months, to digest completely."
+    },
+    {
+      "id": 6,
+      "lumina": "Mina na pishi kabufi ko la foro ro pa la gafo zuru.",
+      "fr": "J'ai alors beaucoup réfléchi sur les aventures de la jungle.",
+      "en": "I thought deeply about the stories of the wild forest."
+    },
+    {
+      "id": 7,
+      "lumina": "Mina na kisi la safo ro ko la jako.",
+      "fr": "Et, à mon tour, j'ai réussi, avec un crayon de couleur, à tracer mon premier dessin.",
+      "en": "I made drawings with the pencil."
+    },
+    {
+      "id": 8,
+      "lumina": "Mina na kisi la safo pana.",
+      "fr": "Mon dessin numéro 1. Il était comme ça.",
+      "en": "I made the first picture."
+    },
+    {
+      "id": 9,
+      "lumina": "La safo pana na fisi la kafa kofa pofo shili somo.",
+      "fr": "Mon dessin représentait un serpent boa fermé qui dormait.",
+      "en": "The first picture showed the exterior serpent animal sleeping."
+    },
+    {
+      "id": 10,
+      "lumina": "Mina na fidi pa la masa ro duru: 'Ma la safo ta timifi Tina?'",
+      "fr": "J'ai montré mon chef-d'œuvre aux grandes personnes et je leur ai demandé : 'Est-ce que mon dessin vous fait peur ?'",
+      "en": "I said to the old persons: 'Does this picture scare you?'"
+    },
+    {
+      "id": 11,
+      "lumina": "La masa ro duru na fidi pa Mina: 'Ma masa timifi la kapa? Fo no!'",
+      "fr": "Elles m'ont répondu : 'Pourquoi un chapeau ferait-il peur ?'",
+      "en": "The old persons said to me: 'Does a person fear a hat? Of course not!'"
+    },
+    {
+      "id": 12,
+      "lumina": "Mina na kisi la safo pani. La safo pani na fisi la kafa kofa kiso.",
+      "fr": "J'ai alors dessiné l'intérieur du serpent boa, afin que les grandes personnes puissent comprendre.",
+      "en": "I made the second picture. The second picture showed the inside serpent animal."
+    },
+    {
+      "id": 13,
+      "lumina": "La masa ro duru du fidi pa Mina: 'Ta ne kisi la kafa kofa kiso o pofo.'",
+      "fr": "Les grandes personnes m'ont conseillé de laisser de côté les dessins de serpents boas ouverts ou fermés.",
+      "en": "The old persons told me: 'Do not draw the inside or outside serpent animal.'"
+    }
+  ]
+}

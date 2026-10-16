@@ -1,0 +1,5 @@
+# Lumina — Python Development Dependencies
+# Core language, analyzer, and TTS engines use standard library only (zero dependencies)
+
+pytest>=8.0.0
+ruff>=0.3.0
