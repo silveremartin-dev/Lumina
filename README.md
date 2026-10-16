@@ -8,24 +8,29 @@ Inspiré du document original `Construction d'une langue universelle optimale - 
 
 ## 🌟 Fonctionnalités du Projet
 
-1. **Documents de Référence Formelle (`docs/`)** :
-   - [**`SPECIFICATIONS.md`**](file:///c:/Silvere/Encours/Developpement/Lumina/docs/SPECIFICATIONS.md) : Analyse, harmonisation phonologique et levée des ambiguïtés du document source.
-   - [**`GRAMMAIRE.md`**](file:///c:/Silvere/Encours/Developpement/Lumina/docs/GRAMMAIRE.md) : Guide grammatical exhaustif (SVO, temps `na/li/vo`, aspects `pe/du`, pronoms, pluriel `ro`, questions `ma`, négation `ne`).
-   - [**`LEXIQUE.md`**](file:///c:/Silvere/Encours/Developpement/Lumina/docs/LEXIQUE.md) : Dictionnaire officiel complet classé par domaines et rôles.
-   - [**`COURS_DEBUTANT.md`**](file:///c:/Silvere/Encours/Developpement/Lumina/docs/COURS_DEBUTANT.md) : Manuel d'initiation progressif en 5 leçons ludiques avec exercices et corrigés.
+1. **Documents de Référence Formelle (`doc/`)** :
+   - [**`SPECIFICATIONS.md`**](file:///c:/Silvere/Encours/Developpement/Lumina/doc/SPECIFICATIONS.md) : Spécifications et phonologie (English & [Français](file:///c:/Silvere/Encours/Developpement/Lumina/doc/SPECIFICATIONS_FR.md)).
+   - [**`GRAMMAR.md`**](file:///c:/Silvere/Encours/Developpement/Lumina/doc/GRAMMAR.md) : Grammaire de référence complète (English & [Français](file:///c:/Silvere/Encours/Developpement/Lumina/doc/GRAMMAIRE_FR.md)).
+   - [**`LEXICON.md`**](file:///c:/Silvere/Encours/Developpement/Lumina/doc/LEXICON.md) : Dictionnaire officiel complet (English & [Français](file:///c:/Silvere/Encours/Developpement/Lumina/doc/LEXIQUE_FR.md)).
+   - [**`TUTORIAL.md`**](file:///c:/Silvere/Encours/Developpement/Lumina/doc/TUTORIAL.md) : Cours d'initiation progressif en 5 leçons (English & [Français](file:///c:/Silvere/Encours/Developpement/Lumina/doc/COURS_DEBUTANT_FR.md)).
+   - [**`phrasebook_dialogues.md`**](file:///c:/Silvere/Encours/Developpement/Lumina/doc/phrasebook_dialogues.md) : Recueil de dialogues et phrases usuelles.
+   - [**`ARCHITECTURE.md`**](file:///c:/Silvere/Encours/Developpement/Lumina/doc/ARCHITECTURE.md) : Architecture logicielle et synthèse formantique.
 
 2. **Lumina Studio Web Interactif (`index.html`)** :
    - Traducteur bidirectionnel direct (Français &harr; Lumina) avec décomposition morphologique en direct.
-   - Synthèse vocale intégrée (TTS) avec prononciation des phonèmes et voyelles pures.
+   - Synthèse vocale intégrée (TTS) et reconnaissance vocale par microphone (STT).
    - Forge interactive de mots (Générateur sémantique C1V1C2V2).
    - Lecteur bilingue karaoké du Chapitre 1 du Petit Prince.
    - Quiz interactifs d'apprentissage.
 
-3. **Moteur Python (`lumina_core/`)** :
+3. **Moteur Python (`source/`) & Scripts (`scripts/`)** :
    - Analyseur morphologique et sémantique avec transcription phonétique IPA (`analyzer.py`).
    - Traducteur bidirectionnel automatique (`translator.py`).
    - Synthétiseur vocal TTS autonome & générateur audio WAV à résonance formantique (`tts.py`).
-   - Interface en ligne de commande complète (`cli.py`).
+   - Module Speech-To-Text (`stt.py`).
+   - Terminal interactif REPL (`scripts/interactive_cli.py`).
+   - Synchronisation et export du dictionnaire (`scripts/export_dictionary.py`).
+   - Audit et vérification du corpus (`scripts/verify_corpus.py`).
 
 ---
 

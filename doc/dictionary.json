@@ -1,0 +1,866 @@
+{
+  "particles": [
+    {
+      "word": "la",
+      "type": "article",
+      "fr": "le, la, les",
+      "en": "the",
+      "desc": "Article défini placé avant le nom"
+    },
+    {
+      "word": "ro",
+      "type": "plural_marker",
+      "fr": "les (marque de pluriel)",
+      "en": "-s (plural marker)",
+      "desc": "Marqueur de pluriel placé après le nom"
+    },
+    {
+      "word": "li",
+      "type": "tense",
+      "fr": "[présent]",
+      "en": "[present tense]",
+      "desc": "Marqueur temporel du présent"
+    },
+    {
+      "word": "na",
+      "type": "tense",
+      "fr": "[passé]",
+      "en": "[past tense]",
+      "desc": "Marqueur temporel du passé"
+    },
+    {
+      "word": "vo",
+      "type": "tense",
+      "fr": "[futur]",
+      "en": "[future tense]",
+      "desc": "Marqueur temporel du futur"
+    },
+    {
+      "word": "pe",
+      "type": "aspect",
+      "fr": "[parfait / accompli]",
+      "en": "[perfective aspect]",
+      "desc": "Action terminée ou accomplie"
+    },
+    {
+      "word": "du",
+      "type": "aspect",
+      "fr": "[duratif / en cours]",
+      "en": "[continuous aspect]",
+      "desc": "Action en cours (équivalent de be + -ing)"
+    },
+    {
+      "word": "ne",
+      "type": "negation",
+      "fr": "ne pas, non",
+      "en": "not",
+      "desc": "Négation verbale placée avant le verbe"
+    },
+    {
+      "word": "ma",
+      "type": "question",
+      "fr": "est-ce que ?",
+      "en": "question marker",
+      "desc": "Marqueur interrogatif placé en début d'énoncé"
+    },
+    {
+      "word": "ta",
+      "type": "imperative",
+      "fr": "impératif / fais",
+      "en": "imperative marker",
+      "desc": "Marqueur impératif en début d'énoncé"
+    },
+    {
+      "word": "sa",
+      "type": "mood",
+      "fr": "heureusement, c'est bien que",
+      "en": "fortunately, glad that",
+      "desc": "Modificateur d'humeur positive"
+    },
+    {
+      "word": "fo",
+      "type": "mood",
+      "fr": "hélas, c'est mal que",
+      "en": "unfortunately, sadly",
+      "desc": "Modificateur d'humeur négative"
+    },
+    {
+      "word": "pa",
+      "type": "preposition",
+      "fr": "à, pour, dans, de (possession)",
+      "en": "to, for, in, of",
+      "desc": "Direction, attribution, intériorité, possession"
+    },
+    {
+      "word": "fa",
+      "type": "preposition",
+      "fr": "de, depuis, provenant de",
+      "en": "from, of origin",
+      "desc": "Provenance, origine ou cause"
+    },
+    {
+      "word": "ko",
+      "type": "preposition",
+      "fr": "avec, sur, au moyen de",
+      "en": "with, on, using",
+      "desc": "Accompagnement, moyen ou support"
+    },
+    {
+      "word": "ve",
+      "type": "conjunction",
+      "fr": "et",
+      "en": "and",
+      "desc": "Coordination additive"
+    },
+    {
+      "word": "o",
+      "type": "conjunction",
+      "fr": "ou",
+      "en": "or",
+      "desc": "Coordination alternative"
+    },
+    {
+      "word": "keli",
+      "type": "relative",
+      "fr": "qui, que, dont",
+      "en": "who, which, that",
+      "desc": "Pronom relatif reliant une proposition"
+    },
+    {
+      "word": "kada",
+      "type": "conjunction",
+      "fr": "quand, lorsque",
+      "en": "when",
+      "desc": "Conjonction subordonnée temporelle"
+    },
+    {
+      "word": "tali",
+      "type": "adverb",
+      "fr": "alors, ainsi, par conséquent",
+      "en": "then, therefore, so",
+      "desc": "Connecteur logique consécutif"
+    },
+    {
+      "word": "ya",
+      "type": "interjection",
+      "fr": "oui",
+      "en": "yes",
+      "desc": "Affirmation"
+    },
+    {
+      "word": "no",
+      "type": "interjection",
+      "fr": "non",
+      "en": "no",
+      "desc": "Dénégation"
+    },
+    {
+      "word": "to",
+      "type": "demonstrative",
+      "fr": "ceci, ce...-ci",
+      "en": "this",
+      "desc": "Démonstratif de proximité"
+    },
+    {
+      "word": "ta",
+      "type": "demonstrative",
+      "fr": "cela, ce...-là",
+      "en": "that",
+      "desc": "Démonstratif d'éloignement"
+    }
+  ],
+  "pronouns": [
+    {
+      "word": "mina",
+      "type": "pronoun",
+      "fr": "je, moi",
+      "en": "I, me",
+      "c1": "M",
+      "v1": "I",
+      "desc": "1ère personne du singulier"
+    },
+    {
+      "word": "miro",
+      "type": "pronoun",
+      "fr": "nous",
+      "en": "we, us",
+      "c1": "M",
+      "v1": "I",
+      "desc": "1ère personne du pluriel"
+    },
+    {
+      "word": "tina",
+      "type": "pronoun",
+      "fr": "tu, toi",
+      "en": "you (singular)",
+      "c1": "T",
+      "v1": "I",
+      "desc": "2ème personne du singulier"
+    },
+    {
+      "word": "tiro",
+      "type": "pronoun",
+      "fr": "vous",
+      "en": "you (plural)",
+      "c1": "T",
+      "v1": "I",
+      "desc": "2ème personne du pluriel"
+    },
+    {
+      "word": "lina",
+      "type": "pronoun",
+      "fr": "il, elle, lui",
+      "en": "he, she, it, him, her",
+      "c1": "L",
+      "v1": "I",
+      "desc": "3ème personne du singulier"
+    },
+    {
+      "word": "liro",
+      "type": "pronoun",
+      "fr": "ils, elles, eux",
+      "en": "they, them",
+      "c1": "L",
+      "v1": "I",
+      "desc": "3ème personne du pluriel"
+    }
+  ],
+  "numbers": [
+    {
+      "word": "pano",
+      "value": 0,
+      "fr": "zéro",
+      "en": "zero"
+    },
+    {
+      "word": "pana",
+      "value": 1,
+      "fr": "un",
+      "en": "one"
+    },
+    {
+      "word": "pani",
+      "value": 2,
+      "fr": "deux",
+      "en": "two"
+    },
+    {
+      "word": "panu",
+      "value": 3,
+      "fr": "trois",
+      "en": "three"
+    },
+    {
+      "word": "pane",
+      "value": 4,
+      "fr": "quatre",
+      "en": "four"
+    },
+    {
+      "word": "paso",
+      "value": 5,
+      "fr": "cinq",
+      "en": "five"
+    },
+    {
+      "word": "pasa",
+      "value": 6,
+      "fr": "six",
+      "en": "six"
+    },
+    {
+      "word": "pasi",
+      "value": 7,
+      "fr": "sept",
+      "en": "seven"
+    },
+    {
+      "word": "pasu",
+      "value": 8,
+      "fr": "huit",
+      "en": "eight"
+    },
+    {
+      "word": "pase",
+      "value": 9,
+      "fr": "neuf",
+      "en": "nine"
+    },
+    {
+      "word": "pato",
+      "value": 10,
+      "fr": "dix",
+      "en": "ten"
+    }
+  ],
+  "roots": [
+    {
+      "word": "kafa",
+      "pos": "noun",
+      "domain": "Espace/Matière",
+      "semantic": "Être vivant corporel",
+      "fr": "animal, bête",
+      "en": "animal, beast"
+    },
+    {
+      "word": "kofa",
+      "pos": "noun",
+      "domain": "Espace/Matière",
+      "semantic": "Corps rampant allongé",
+      "fr": "serpent",
+      "en": "snake, serpent"
+    },
+    {
+      "word": "kabo",
+      "pos": "noun",
+      "domain": "Espace/Matière",
+      "semantic": "Créature corporelle massive",
+      "fr": "éléphant",
+      "en": "elephant"
+    },
+    {
+      "word": "kapa",
+      "pos": "noun",
+      "domain": "Espace/Forme",
+      "semantic": "Couvre-chef, protection de tête",
+      "fr": "chapeau, couvre-chef",
+      "en": "hat, cap"
+    },
+    {
+      "word": "kopa",
+      "pos": "noun",
+      "domain": "Espace/Forme",
+      "semantic": "Appendice allongé, trompe",
+      "fr": "nez, trompe",
+      "en": "nose, trunk"
+    },
+    {
+      "word": "gabo",
+      "pos": "noun",
+      "domain": "Espace/Système",
+      "semantic": "Ensemble planétaire ou territorial",
+      "fr": "monde, terre, globe",
+      "en": "world, earth, globe"
+    },
+    {
+      "word": "gafo",
+      "pos": "noun",
+      "domain": "Espace/Lieu",
+      "semantic": "Ensemble végétal sauvage",
+      "fr": "forêt, bois",
+      "en": "forest, woods"
+    },
+    {
+      "word": "loko",
+      "pos": "noun",
+      "domain": "Mouvement/Espace",
+      "semantic": "Point spatial déterminé",
+      "fr": "lieu, endroit",
+      "en": "place, location"
+    },
+    {
+      "word": "fapo",
+      "pos": "noun",
+      "domain": "Communication/Écrit",
+      "semantic": "Support de savoir écrit",
+      "fr": "livre, écrit, manuel",
+      "en": "book, written text"
+    },
+    {
+      "word": "safo",
+      "pos": "noun",
+      "domain": "Sensation/Vision",
+      "semantic": "Représentation visuelle",
+      "fr": "image, dessin, photo",
+      "en": "image, drawing, picture"
+    },
+    {
+      "word": "foro",
+      "pos": "noun",
+      "domain": "Communication/Récit",
+      "semantic": "Récit transmis, narration",
+      "fr": "histoire, conte, récit",
+      "en": "story, tale, history"
+    },
+    {
+      "word": "masa",
+      "pos": "noun",
+      "domain": "Humain/Social",
+      "semantic": "Être humain générique",
+      "fr": "personne, individu, être humain",
+      "en": "person, human being"
+    },
+    {
+      "word": "miso",
+      "pos": "noun",
+      "domain": "Humain/Social",
+      "semantic": "Lien d'amitié, relation proche",
+      "fr": "ami, camarade",
+      "en": "friend, companion"
+    },
+    {
+      "word": "mito",
+      "pos": "noun",
+      "domain": "Humain/Temps",
+      "semantic": "Être humain jeune",
+      "fr": "enfant, petit",
+      "en": "child, kid"
+    },
+    {
+      "word": "jako",
+      "pos": "noun",
+      "domain": "Outil/Matière",
+      "semantic": "Instrument pour tracer ou dessiner",
+      "fr": "crayon, plume, stylet",
+      "en": "pencil, pen, stylus"
+    },
+    {
+      "word": "jobe",
+      "pos": "noun",
+      "domain": "Outil/Action",
+      "semantic": "Activité professionnelle",
+      "fr": "travail, labeur, emploi",
+      "en": "job, work, labor"
+    },
+    {
+      "word": "jugo",
+      "pos": "noun",
+      "domain": "Outil/Loisir",
+      "semantic": "Activité récréative",
+      "fr": "jeu, divertissement",
+      "en": "game, play"
+    },
+    {
+      "word": "loso",
+      "pos": "noun",
+      "domain": "Mouvement/Corps",
+      "semantic": "Activité physique codifiée",
+      "fr": "sport, gymnastique",
+      "en": "sport, athletics"
+    },
+    {
+      "word": "popa",
+      "pos": "noun",
+      "domain": "Logique/Société",
+      "semantic": "Organisation de la cité",
+      "fr": "politique, gouvernance",
+      "en": "politics, governance"
+    },
+    {
+      "word": "konse",
+      "pos": "noun",
+      "domain": "Communication/Aide",
+      "semantic": "Recommandation avisée",
+      "fr": "conseil, recommandation",
+      "en": "advice, counsel"
+    },
+    {
+      "word": "gotu",
+      "pos": "noun",
+      "domain": "Espace/Savoir",
+      "semantic": "Étude spatiale de la Terre",
+      "fr": "géographie",
+      "en": "geography"
+    },
+    {
+      "word": "pilo",
+      "pos": "noun",
+      "domain": "Quantité/Calcul",
+      "semantic": "Opération numérique",
+      "fr": "calcul, arithmétique",
+      "en": "calculation, reckoning"
+    },
+    {
+      "word": "fito",
+      "pos": "noun",
+      "domain": "Communication/Règle",
+      "semantic": "Structure des phrases",
+      "fr": "grammaire, syntaxe",
+      "en": "grammar, syntax"
+    },
+    {
+      "word": "pinto",
+      "pos": "noun",
+      "domain": "Sensation/Art",
+      "semantic": "Art pictural",
+      "fr": "peinture, tableau",
+      "en": "painting, visual art"
+    },
+    {
+      "word": "razo",
+      "pos": "noun",
+      "domain": "Logique/Esprit",
+      "semantic": "Faculté intellectuelle déductive",
+      "fr": "raison, logique",
+      "en": "reason, logic"
+    },
+    {
+      "word": "somo",
+      "pos": "noun",
+      "domain": "Sensation/Repos",
+      "semantic": "État de veille suspendue",
+      "fr": "sommeil, repos",
+      "en": "sleep, slumber"
+    },
+    {
+      "word": "tome",
+      "pos": "noun",
+      "domain": "Temps/Astre",
+      "semantic": "Cycle lunaire / mois",
+      "fr": "lune, mois",
+      "en": "moon, month"
+    },
+    {
+      "word": "chapo",
+      "pos": "noun",
+      "domain": "Outil/Calcul",
+      "semantic": "Machine de calcul de données",
+      "fr": "ordinateur, machine calculatrice",
+      "en": "computer"
+    },
+    {
+      "word": "gefo",
+      "pos": "noun",
+      "domain": "Espace/Lien",
+      "semantic": "Système maillé d'échange",
+      "fr": "internet, réseau mondial",
+      "en": "internet, network"
+    },
+    {
+      "word": "kiso",
+      "pos": "noun",
+      "domain": "Espace/Intérieur",
+      "semantic": "Espace interne",
+      "fr": "intérieur, dedans",
+      "en": "interior, inside"
+    },
+    {
+      "word": "pofo",
+      "pos": "noun",
+      "domain": "Espace/Extérieur",
+      "semantic": "Espace externe",
+      "fr": "extérieur, dehors",
+      "en": "exterior, outside"
+    },
+    {
+      "word": "shili",
+      "pos": "verb",
+      "domain": "Abstraction",
+      "semantic": "État d'existence ou qualité",
+      "fr": "être, exister",
+      "en": "to be, to exist"
+    },
+    {
+      "word": "sifi",
+      "pos": "verb",
+      "domain": "Sensation/Vision",
+      "semantic": "Percevoir avec les yeux",
+      "fr": "voir, regarder",
+      "en": "to see, to watch"
+    },
+    {
+      "word": "fidi",
+      "pos": "verb",
+      "domain": "Communication",
+      "semantic": "Émettre des paroles",
+      "fr": "dire, parler, énoncer",
+      "en": "to say, to tell, to speak"
+    },
+    {
+      "word": "kidi",
+      "pos": "verb",
+      "domain": "Matière/Vie",
+      "semantic": "Ingérer de la nourriture",
+      "fr": "manger, consommer",
+      "en": "to eat, to devour"
+    },
+    {
+      "word": "fisi",
+      "pos": "verb",
+      "domain": "Communication/Vision",
+      "semantic": "Rendre visible à autrui",
+      "fr": "montrer, faire voir",
+      "en": "to show, to demonstrate"
+    },
+    {
+      "word": "nomi",
+      "pos": "verb",
+      "domain": "Communication/Nom",
+      "semantic": "Avoir pour appellation",
+      "fr": "s'appeler, nommer",
+      "en": "to be called, to name"
+    },
+    {
+      "word": "kisi",
+      "pos": "verb",
+      "domain": "Outil/Action",
+      "semantic": "Réaliser, fabriquer",
+      "fr": "faire, fabriquer, exécuter",
+      "en": "to do, to make"
+    },
+    {
+      "word": "pishi",
+      "pos": "verb",
+      "domain": "Logique/Esprit",
+      "semantic": "Traiter une idée intellectuelle",
+      "fr": "penser, réfléchir",
+      "en": "to think, to reflect"
+    },
+    {
+      "word": "timo",
+      "pos": "verb",
+      "domain": "Humain/Social",
+      "semantic": "Entrer en contact physique avec",
+      "fr": "rencontrer, faire la connaissance",
+      "en": "to meet, to encounter"
+    },
+    {
+      "word": "tovi",
+      "pos": "verb",
+      "domain": "Espace/Recherche",
+      "semantic": "Aboutir dans une recherche",
+      "fr": "trouver, découvrir",
+      "en": "to find, to discover"
+    },
+    {
+      "word": "voli",
+      "pos": "verb",
+      "domain": "Mouvement/Air",
+      "semantic": "Se déplacer dans les airs",
+      "fr": "voler (dans l'air)",
+      "en": "to fly"
+    },
+    {
+      "word": "seni",
+      "pos": "verb",
+      "domain": "Sensation",
+      "semantic": "Percevoir par les sens ou l'intuition",
+      "fr": "sentir, éprouver",
+      "en": "to feel, to sense"
+    },
+    {
+      "word": "laso",
+      "pos": "verb",
+      "domain": "Mouvement/Relâche",
+      "semantic": "Ne plus retenir ou contraindre",
+      "fr": "laisser, abandonner",
+      "en": "to leave, to let"
+    },
+    {
+      "word": "debi",
+      "pos": "verb",
+      "domain": "Logique/Devoir",
+      "semantic": "Avoir l'obligation formelle de",
+      "fr": "devoir, être obligé",
+      "en": "must, to have to"
+    },
+    {
+      "word": "apre",
+      "pos": "verb",
+      "domain": "Logique/Savoir",
+      "semantic": "Intégrer une connaissance nouvelle",
+      "fr": "apprendre, assimiler",
+      "en": "to learn"
+    },
+    {
+      "word": "servi",
+      "pos": "verb",
+      "domain": "Humain/Aide",
+      "semantic": "Fournir un travail utile pour autrui",
+      "fr": "servir, assister",
+      "en": "to serve, to help"
+    },
+    {
+      "word": "rekono",
+      "pos": "verb",
+      "domain": "Logique/Mémoire",
+      "semantic": "Identifier à partir d'un souvenir",
+      "fr": "reconnaître, réidentifier",
+      "en": "to recognize"
+    },
+    {
+      "word": "piko",
+      "pos": "verb",
+      "domain": "Logique/Esprit",
+      "semantic": "Saisir le sens complet",
+      "fr": "comprendre, saisir intellectuellement",
+      "en": "to understand, to comprehend"
+    },
+    {
+      "word": "lifi",
+      "pos": "verb",
+      "domain": "Mouvement",
+      "semantic": "Changer d'emplacement spatial",
+      "fr": "bouger, se déplacer",
+      "en": "to move"
+    },
+    {
+      "word": "timi",
+      "pos": "verb",
+      "domain": "Sensation/Crainte",
+      "semantic": "Éprouver ou inspirer de la frayeur",
+      "fr": "craindre, effrayer (timifi = effrayant)",
+      "en": "to fear, to scare"
+    },
+    {
+      "word": "kitu",
+      "pos": "adj",
+      "domain": "Espace/Dimension",
+      "semantic": "De petite dimension",
+      "fr": "petit",
+      "en": "small, little"
+    },
+    {
+      "word": "guru",
+      "pos": "adj",
+      "domain": "Espace/Dimension",
+      "semantic": "De grande dimension",
+      "fr": "grand, vaste",
+      "en": "big, large, tall"
+    },
+    {
+      "word": "kabu",
+      "pos": "adj",
+      "domain": "Espace/Masse",
+      "semantic": "De masse ou corpulence imposante",
+      "fr": "massif, énorme",
+      "en": "massive, huge"
+    },
+    {
+      "word": "sulo",
+      "pos": "adj",
+      "domain": "Sensation/Jugement",
+      "semantic": "Agréable, harmonieux, vertueux",
+      "fr": "bon, beau, bien",
+      "en": "good, beautiful, nice"
+    },
+    {
+      "word": "zuru",
+      "pos": "adj",
+      "domain": "Matière/Nature",
+      "semantic": "Non domestiqué par l'homme",
+      "fr": "sauvage, indompté",
+      "en": "wild, untamed"
+    },
+    {
+      "word": "duru",
+      "pos": "adj",
+      "domain": "Temps/Durée",
+      "semantic": "Existant depuis une longue période",
+      "fr": "ancien, vieux, âgé",
+      "en": "old, ancient"
+    },
+    {
+      "word": "puru",
+      "pos": "adj",
+      "domain": "Logique/Vérité",
+      "semantic": "Conforme aux faits réels",
+      "fr": "vrai, authentique",
+      "en": "true, genuine"
+    },
+    {
+      "word": "kogu",
+      "pos": "adj",
+      "domain": "Logique/Clarté",
+      "semantic": "Facile à discerner, perspicace",
+      "fr": "clair, net, intelligent",
+      "en": "clear, bright, smart"
+    },
+    {
+      "word": "zelu",
+      "pos": "adj",
+      "domain": "Sensation/Joie",
+      "semantic": "Rempli de contentement",
+      "fr": "heureux, joyeux",
+      "en": "happy, joyful"
+    },
+    {
+      "word": "disu",
+      "pos": "adj",
+      "domain": "Sensation/Tristesse",
+      "semantic": "Privé d'énergie morale",
+      "fr": "découragé, abattu",
+      "en": "discouraged, downcast"
+    },
+    {
+      "word": "fatu",
+      "pos": "adj",
+      "domain": "Sensation/Effort",
+      "semantic": "Demandant un labeur exténuant",
+      "fr": "fatigant, épuisant",
+      "en": "tiring, exhausting"
+    },
+    {
+      "word": "seno",
+      "pos": "adj",
+      "domain": "Humain/Solitude",
+      "semantic": "Isolé des autres individus",
+      "fr": "seul, isolé",
+      "en": "alone, solitary"
+    },
+    {
+      "word": "perdu",
+      "pos": "adj",
+      "domain": "Espace/Perte",
+      "semantic": "Ayant égaré son chemin",
+      "fr": "perdu, égaré",
+      "en": "lost"
+    },
+    {
+      "word": "tota",
+      "pos": "adj",
+      "domain": "Quantité/Total",
+      "semantic": "Sans exclusion d'aucune partie",
+      "fr": "tout, entier, total",
+      "en": "all, whole, total"
+    },
+    {
+      "word": "suku",
+      "pos": "adj",
+      "domain": "Couleur",
+      "semantic": "Couleur de la lumière pure",
+      "fr": "blanc",
+      "en": "white"
+    },
+    {
+      "word": "sutu",
+      "pos": "adj",
+      "domain": "Couleur",
+      "semantic": "Absence totale de lumière",
+      "fr": "noir",
+      "en": "black"
+    },
+    {
+      "word": "suru",
+      "pos": "adj",
+      "domain": "Couleur",
+      "semantic": "Couleur du sang ou du feu",
+      "fr": "rouge",
+      "en": "red"
+    },
+    {
+      "word": "subu",
+      "pos": "adj",
+      "domain": "Couleur",
+      "semantic": "Couleur du ciel dégagé ou de l'océan",
+      "fr": "bleu",
+      "en": "blue"
+    },
+    {
+      "word": "sugu",
+      "pos": "adj",
+      "domain": "Couleur",
+      "semantic": "Couleur des feuillages",
+      "fr": "vert",
+      "en": "green"
+    },
+    {
+      "word": "suju",
+      "pos": "adj",
+      "domain": "Couleur",
+      "semantic": "Couleur du soleil",
+      "fr": "jaune",
+      "en": "yellow"
+    }
+  ]
+}

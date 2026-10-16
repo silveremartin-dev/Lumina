@@ -86,4 +86,4 @@ $$\text{Root} = C_1 \cdot V_1 \cdot C_2 \cdot V_2$$
    py -3 -m pytest test/
    ```
 3. **Phonetic Determinism**: IPA output must strictly adhere to the IPA standards defined in `doc/SPECIFICATIONS.md`.
-4. **Bilingual Corpus**: Any modification to lexical items must update both `data/lexique.json` and English/French documentation in `doc/` and `docs/`.
+4. **Bilingual Corpus**: Any modification to lexical items must update both `data/lexique.json` and English/French documentation in `doc/`.
