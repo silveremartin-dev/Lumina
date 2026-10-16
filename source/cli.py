@@ -57,6 +57,11 @@ def main():
     p_wav.add_argument("text", help="Texte Lumina")
     p_wav.add_argument("-o", "--output", default="output.wav", help="Fichier de sortie (défaut: output.wav)")
 
+    # Commande 'listen' (Speech-to-Text)
+    p_stt = subparsers.add_parser("listen", help="Écoute au microphone (STT) et traduit automatiquement")
+    p_stt.add_argument("--seconds", type=int, default=5, help="Durée d'écoute en secondes (défaut: 5)")
+    p_stt.add_argument("--to", choices=["lumina", "fr"], default="lumina", help="Langue de traduction cible (défaut: lumina)")
+
     # Commande 'wordgen'
     p_gen = subparsers.add_parser("wordgen", help="Forge un mot Lumina selon la matrice C1V1C2V2")
     p_gen.add_argument("--c1", required=True, help="Consonne de domaine (ex: K, M, T, F, S, L, J)")
@@ -122,6 +127,29 @@ def main():
         out = tts.generate_formant_wav(args.text, args.output)
         print(f"\nFichier audio WAV généré avec succès : {out}")
         print(f"Transcription IPA : {tts.get_ipa(args.text)}")
+
+    elif args.command == "listen":
+        try:
+            from source.stt import LuminaSTT
+        except ImportError:
+            from lumina_core.stt import LuminaSTT
+        stt = LuminaSTT()
+        print(f"\n[STT] Écoute au microphone pendant {args.seconds} secondes...")
+        print("Parlez distinctement en français...")
+        text = stt.listen_and_transcribe(timeout_sec=args.seconds)
+        if not text:
+            print("Aucune parole détectée ou périphérique microphone non configuré.")
+        else:
+            print(f"\n[Texte reconnu (STT)] : \"{text}\"")
+            if args.to == "lumina":
+                res = translator.translate_fr_to_lumina(text)
+                print(f"[Traduction Lumina]   : {res['target']}")
+                print(f"[Phonétique IPA]      : {tts.get_ipa(res['target'])}")
+                print(f"\nPrononciation Lumina...")
+                tts.speak_powershell(res['target'])
+            else:
+                res = translator.translate_lumina_to_fr(text)
+                print(f"[Traduction Français] : {res['target']}")
 
     elif args.command == "wordgen":
         c1 = args.c1.upper()
