@@ -24,7 +24,7 @@ def main():
     except Exception:
         pass
 
-    with socketserver.TCPServer(("", PORT), QuietHandler) as httpd:
+    with socketserver.TCPServer(("127.0.0.1", PORT), QuietHandler) as httpd:
         try:
             httpd.serve_forever()
         except KeyboardInterrupt:

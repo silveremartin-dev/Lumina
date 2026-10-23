@@ -69,7 +69,7 @@ This document outlines the software architecture of the Lumina computational lin
 
 | Directory | Purpose |
 |---|---|
-| `doc/` | Comprehensive technical and linguistic documentation in English |
+| `docs/` | Comprehensive technical and linguistic documentation in English |
 | `docs/` | French documentation & pedagogical resources |
 | `data/` | Authoritative JSON corpora (`lexique.json`, `petit_prince.json`) |
 | `source/` | Production-grade Python package |

@@ -13,20 +13,20 @@ if sys.stdout.encoding != 'utf-8':
 
 ROOT_DIR = Path(__file__).resolve().parent.parent
 LEXIQUE_PATH = ROOT_DIR / "data" / "lexique.json"
-DOC_DIR = ROOT_DIR / "doc"
+DOC_DIR = ROOT_DIR / "docs"
 
 def export_all():
     print("--- Exporting Lumina Dictionary ---")
     with open(LEXIQUE_PATH, "r", encoding="utf-8") as f:
         data = json.load(f)
 
-    # 1. Export doc/dictionary.json
+    # 1. Export docs/dictionary.json
     out_json = DOC_DIR / "dictionary.json"
     with open(out_json, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
     print(f"Exported JSON: {out_json}")
 
-    # 2. Export doc/dictionary.md
+    # 2. Export docs/dictionary.md
     out_md = DOC_DIR / "dictionary.md"
     lines = [
         "# Lumina — Standardized Bilingual Dictionary",

@@ -447,7 +447,7 @@
       "en": "politics, governance"
     },
     {
-      "word": "konse",
+      "word": "faso",
       "pos": "noun",
       "domain": "Communication/Aide",
       "semantic": "Recommandation avisée",
@@ -479,7 +479,7 @@
       "en": "grammar, syntax"
     },
     {
-      "word": "pinto",
+      "word": "sapo",
       "pos": "noun",
       "domain": "Sensation/Art",
       "semantic": "Art pictural",
@@ -655,7 +655,7 @@
       "en": "must, to have to"
     },
     {
-      "word": "apre",
+      "word": "pisi",
       "pos": "verb",
       "domain": "Logique/Savoir",
       "semantic": "Intégrer une connaissance nouvelle",
@@ -663,7 +663,7 @@
       "en": "to learn"
     },
     {
-      "word": "servi",
+      "word": "misi",
       "pos": "verb",
       "domain": "Humain/Aide",
       "semantic": "Fournir un travail utile pour autrui",
@@ -671,7 +671,7 @@
       "en": "to serve, to help"
     },
     {
-      "word": "rekono",
+      "word": "pino",
       "pos": "verb",
       "domain": "Logique/Mémoire",
       "semantic": "Identifier à partir d'un souvenir",
@@ -799,7 +799,7 @@
       "en": "alone, solitary"
     },
     {
-      "word": "perdu",
+      "word": "kupu",
       "pos": "adj",
       "domain": "Espace/Perte",
       "semantic": "Ayant égaré son chemin",

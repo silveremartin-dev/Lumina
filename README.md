@@ -8,13 +8,13 @@ Inspiré du document original `Construction d'une langue universelle optimale - 
 
 ## 🌟 Fonctionnalités du Projet
 
-1. **Documents de Référence Formelle (`doc/`)** :
-   - [**`SPECIFICATIONS.md`**](file:///c:/Silvere/Encours/Developpement/Lumina/doc/SPECIFICATIONS.md) : Spécifications et phonologie (English & [Français](file:///c:/Silvere/Encours/Developpement/Lumina/doc/SPECIFICATIONS_FR.md)).
-   - [**`GRAMMAR.md`**](file:///c:/Silvere/Encours/Developpement/Lumina/doc/GRAMMAR.md) : Grammaire de référence complète (English & [Français](file:///c:/Silvere/Encours/Developpement/Lumina/doc/GRAMMAIRE_FR.md)).
-   - [**`LEXICON.md`**](file:///c:/Silvere/Encours/Developpement/Lumina/doc/LEXICON.md) : Dictionnaire officiel complet (English & [Français](file:///c:/Silvere/Encours/Developpement/Lumina/doc/LEXIQUE_FR.md)).
-   - [**`TUTORIAL.md`**](file:///c:/Silvere/Encours/Developpement/Lumina/doc/TUTORIAL.md) : Cours d'initiation progressif en 5 leçons (English & [Français](file:///c:/Silvere/Encours/Developpement/Lumina/doc/COURS_DEBUTANT_FR.md)).
-   - [**`phrasebook_dialogues.md`**](file:///c:/Silvere/Encours/Developpement/Lumina/doc/phrasebook_dialogues.md) : Recueil de dialogues et phrases usuelles.
-   - [**`ARCHITECTURE.md`**](file:///c:/Silvere/Encours/Developpement/Lumina/doc/ARCHITECTURE.md) : Architecture logicielle et synthèse formantique.
+1. **Documents de Référence Formelle (`docs/`)** :
+   - [**`SPECIFICATIONS.md`**](file:///c:/Silvere/Encours/Developpement/Lumina/docs/SPECIFICATIONS.md) : Spécifications et phonologie (English & [Français](file:///c:/Silvere/Encours/Developpement/Lumina/docs/SPECIFICATIONS_FR.md)).
+   - [**`GRAMMAR.md`**](file:///c:/Silvere/Encours/Developpement/Lumina/docs/GRAMMAR.md) : Grammaire de référence complète (English & [Français](file:///c:/Silvere/Encours/Developpement/Lumina/docs/GRAMMAIRE_FR.md)).
+   - [**`LEXICON.md`**](file:///c:/Silvere/Encours/Developpement/Lumina/docs/LEXICON.md) : Dictionnaire officiel complet (English & [Français](file:///c:/Silvere/Encours/Developpement/Lumina/docs/LEXIQUE_FR.md)).
+   - [**`TUTORIAL.md`**](file:///c:/Silvere/Encours/Developpement/Lumina/docs/TUTORIAL.md) : Cours d'initiation progressif en 5 leçons (English & [Français](file:///c:/Silvere/Encours/Developpement/Lumina/docs/COURS_DEBUTANT_FR.md)).
+   - [**`phrasebook_dialogues.md`**](file:///c:/Silvere/Encours/Developpement/Lumina/docs/phrasebook_dialogues.md) : Recueil de dialogues et phrases usuelles.
+   - [**`ARCHITECTURE.md`**](file:///c:/Silvere/Encours/Developpement/Lumina/docs/ARCHITECTURE.md) : Architecture logicielle et synthèse formantique.
 
 2. **Lumina Studio Web Interactif (`index.html`)** :
    - Traducteur bidirectionnel direct (Français &harr; Lumina) avec décomposition morphologique en direct.

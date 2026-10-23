@@ -28,18 +28,23 @@ class LuminaTTS:
         return " ".join(ipa_words)
 
     def speak_powershell(self, text: str, rate: int = 0):
-        """Utilise le synthétiseur vocal intégré de Windows via PowerShell."""
-        # On prépare le texte Lumina en prononciation phonétique claire
-        # En configurant la voix pour articuler distinctement les voyelles ouvertes
-        escaped_text = text.replace("'", "''").replace('"', '`"')
-        ps_cmd = (
+        """Utilise le synthétiseur vocal intégré de Windows via PowerShell avec passage sécurisé par stdin."""
+        ps_script = (
             f"Add-Type -AssemblyName System.Speech; "
             f"$synth = New-Object System.Speech.Synthesis.SpeechSynthesizer; "
-            f"$synth.Rate = {rate}; "
-            f"$synth.Speak('{escaped_text}');"
+            f"$synth.Rate = {int(rate)}; "
+            f"$text = [Console]::In.ReadToEnd().Trim(); "
+            f"if ($text) {{ $synth.Speak($text) }}"
         )
         try:
-            subprocess.run(["powershell", "-NoProfile", "-Command", ps_cmd], check=True)
+            subprocess.run(
+                ["powershell", "-NoProfile", "-Command", ps_script],
+                input=text,
+                text=True,
+                capture_output=True,
+                check=True,
+                timeout=15,
+            )
             return True
         except Exception as e:
             print(f"Erreur synthèse vocale Windows : {e}", file=sys.stderr)

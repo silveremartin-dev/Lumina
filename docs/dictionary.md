@@ -62,12 +62,12 @@ This dictionary is generated automatically from `data/lexique.json`.
 
 | Word | Part of Speech | Domain | Semantic Vector | French | English |
 |---|---|---|---|---|---|
-| `apre` | verb | Logique/Savoir | Intégrer une connaissance nouvelle | apprendre, assimiler | to learn |
 | `chapo` | noun | Outil/Calcul | Machine de calcul de données | ordinateur, machine calculatrice | computer |
 | `debi` | verb | Logique/Devoir | Avoir l'obligation formelle de | devoir, être obligé | must, to have to |
 | `disu` | adj | Sensation/Tristesse | Privé d'énergie morale | découragé, abattu | discouraged, downcast |
 | `duru` | adj | Temps/Durée | Existant depuis une longue période | ancien, vieux, âgé | old, ancient |
 | `fapo` | noun | Communication/Écrit | Support de savoir écrit | livre, écrit, manuel | book, written text |
+| `faso` | noun | Communication/Aide | Recommandation avisée | conseil, recommandation | advice, counsel |
 | `fatu` | adj | Sensation/Effort | Demandant un labeur exténuant | fatigant, épuisant | tiring, exhausting |
 | `fidi` | verb | Communication | Émettre des paroles | dire, parler, énoncer | to say, to tell, to speak |
 | `fisi` | verb | Communication/Vision | Rendre visible à autrui | montrer, faire voir | to show, to demonstrate |
@@ -91,30 +91,30 @@ This dictionary is generated automatically from `data/lexique.json`.
 | `kitu` | adj | Espace/Dimension | De petite dimension | petit | small, little |
 | `kofa` | noun | Espace/Matière | Corps rampant allongé | serpent | snake, serpent |
 | `kogu` | adj | Logique/Clarté | Facile à discerner, perspicace | clair, net, intelligent | clear, bright, smart |
-| `konse` | noun | Communication/Aide | Recommandation avisée | conseil, recommandation | advice, counsel |
 | `kopa` | noun | Espace/Forme | Appendice allongé, trompe | nez, trompe | nose, trunk |
+| `kupu` | adj | Espace/Perte | Ayant égaré son chemin | perdu, égaré | lost |
 | `laso` | verb | Mouvement/Relâche | Ne plus retenir ou contraindre | laisser, abandonner | to leave, to let |
 | `lifi` | verb | Mouvement | Changer d'emplacement spatial | bouger, se déplacer | to move |
 | `loko` | noun | Mouvement/Espace | Point spatial déterminé | lieu, endroit | place, location |
 | `loso` | noun | Mouvement/Corps | Activité physique codifiée | sport, gymnastique | sport, athletics |
 | `masa` | noun | Humain/Social | Être humain générique | personne, individu, être humain | person, human being |
+| `misi` | verb | Humain/Aide | Fournir un travail utile pour autrui | servir, assister | to serve, to help |
 | `miso` | noun | Humain/Social | Lien d'amitié, relation proche | ami, camarade | friend, companion |
 | `mito` | noun | Humain/Temps | Être humain jeune | enfant, petit | child, kid |
 | `nomi` | verb | Communication/Nom | Avoir pour appellation | s'appeler, nommer | to be called, to name |
-| `perdu` | adj | Espace/Perte | Ayant égaré son chemin | perdu, égaré | lost |
 | `piko` | verb | Logique/Esprit | Saisir le sens complet | comprendre, saisir intellectuellement | to understand, to comprehend |
 | `pilo` | noun | Quantité/Calcul | Opération numérique | calcul, arithmétique | calculation, reckoning |
-| `pinto` | noun | Sensation/Art | Art pictural | peinture, tableau | painting, visual art |
+| `pino` | verb | Logique/Mémoire | Identifier à partir d'un souvenir | reconnaître, réidentifier | to recognize |
 | `pishi` | verb | Logique/Esprit | Traiter une idée intellectuelle | penser, réfléchir | to think, to reflect |
+| `pisi` | verb | Logique/Savoir | Intégrer une connaissance nouvelle | apprendre, assimiler | to learn |
 | `pofo` | noun | Espace/Extérieur | Espace externe | extérieur, dehors | exterior, outside |
 | `popa` | noun | Logique/Société | Organisation de la cité | politique, gouvernance | politics, governance |
 | `puru` | adj | Logique/Vérité | Conforme aux faits réels | vrai, authentique | true, genuine |
 | `razo` | noun | Logique/Esprit | Faculté intellectuelle déductive | raison, logique | reason, logic |
-| `rekono` | verb | Logique/Mémoire | Identifier à partir d'un souvenir | reconnaître, réidentifier | to recognize |
 | `safo` | noun | Sensation/Vision | Représentation visuelle | image, dessin, photo | image, drawing, picture |
+| `sapo` | noun | Sensation/Art | Art pictural | peinture, tableau | painting, visual art |
 | `seni` | verb | Sensation | Percevoir par les sens ou l'intuition | sentir, éprouver | to feel, to sense |
 | `seno` | adj | Humain/Solitude | Isolé des autres individus | seul, isolé | alone, solitary |
-| `servi` | verb | Humain/Aide | Fournir un travail utile pour autrui | servir, assister | to serve, to help |
 | `shili` | verb | Abstraction | État d'existence ou qualité | être, exister | to be, to exist |
 | `sifi` | verb | Sensation/Vision | Percevoir avec les yeux | voir, regarder | to see, to watch |
 | `somo` | noun | Sensation/Repos | État de veille suspendue | sommeil, repos | sleep, slumber |
