@@ -30,3 +30,10 @@ def test_wav_audio_generation(tmp_path):
         assert wf.getsampwidth() == 2  # 16-bit
         assert wf.getframerate() == 22050
         assert wf.getnframes() > 1000
+
+def test_ipa_conversational_phrase():
+    tts = LuminaTTS()
+    ipa = tts.get_ipa("Fali, Mina nomi Silver, Ma Tina shili zelu?")
+    assert "/ˈfali/" in ipa
+    assert "/ˈnomi/" in ipa
+    assert "/ˈzelu/" in ipa

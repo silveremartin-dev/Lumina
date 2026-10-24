@@ -26,8 +26,8 @@ def export_all():
         json.dump(data, f, indent=2, ensure_ascii=False)
     print(f"Exported JSON: {out_json}")
 
-    # 2. Export docs/dictionary.md
-    out_md = DOC_DIR / "dictionary.md"
+    # 2. Export docs/DICTIONARY.MD
+    out_md = DOC_DIR / "DICTIONARY.MD"
     lines = [
         "# Lumina — Standardized Bilingual Dictionary",
         "",

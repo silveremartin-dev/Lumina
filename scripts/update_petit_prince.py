@@ -1,0 +1,159 @@
+"""Script to restore authentic Chapter 1 of Le Petit Prince in data/petit_prince.json
+Complete text with all 22 sentences aligned in Lumina, French (Saint-Exupéry authentique) and English.
+"""
+
+import json
+from pathlib import Path
+
+ROOT_DIR = Path(__file__).resolve().parent.parent
+
+PETIT_PRINCE_CHAPTER_1 = {
+    "title": {
+        "lumina": "Foro pa la Kitu Masa Duru (Chiffre 1)",
+        "fr": "Le Petit Prince (Chapitre 1 — Texte Intégral Authentique)",
+        "en": "The Little Prince (Chapter 1 — Complete Authentic Text)"
+    },
+    "sentences": [
+        {
+            "id": 1,
+            "lumina": "Kada Mina na shili ko pase tara, Mina na sifi pana, safo sulo, ko fapo pa la gafo zuru keli na nomi 'Foro Viva'.",
+            "fr": "Lorsque j'avais six ans j'ai vu, une fois, une magnifique image, dans un livre sur la Forêt Vierge qui s'appelait « Histoires Vécues ».",
+            "en": "Once when I was six years old I saw a magnificent picture in a book, called 'True Stories from Nature', about the primeval forest."
+        },
+        {
+            "id": 2,
+            "lumina": "To na fisi la kafa kofa keli na kidi la kafa zuru.",
+            "fr": "Ça représentait un serpent boa qui avalait un fauve.",
+            "en": "It showed a boa constrictor in the act of swallowing an animal."
+        },
+        {
+            "id": 3,
+            "lumina": "La na fidi ko la fapo: 'La kafa kofa ro na kidi la kafa tota pa Lina, ne kidi ko kda. Tali Liro ne lifi ve somo pa pase tome pa kidi tota.'",
+            "fr": "On disait dans le livre : « Les serpents boas avalent leur proie tout entière, sans la mâcher. Ensuite ils ne peuvent plus bouger et ils dorment pendant les six mois de leur digestion. »",
+            "en": "In the book it said: 'Boa constrictors swallow their prey whole, without chewing it. After that they are not able to move, and they sleep through the six months that they need for digestion.'"
+        },
+        {
+            "id": 4,
+            "lumina": "Mina na pishi kabufi ko la foro ro pa la gafo zuru, ve Mina na kisi ko la jako pa sapo la safo pana pa Mina. La safo pana. Lina na shili toli:",
+            "fr": "J'ai alors beaucoup réfléchi sur les aventures de la jungle et, à mon tour, j'ai réussi, avec un crayon de couleur, à tracer mon premier dessin. Mon dessin numéro 1. Il était comme ça :",
+            "en": "I pondered deeply, then, over the adventures of the jungle. And after some work with a colored pencil I succeeded in making my first drawing. My Drawing Number One. It looked something like this:"
+        },
+        {
+            "id": 5,
+            "lumina": "Mina na fisi la safo sulo pa Mina pa la masa ro duru, ve Mina na fiki pa Liro ma la safo ta na timi Liro.",
+            "fr": "J'ai montré mon chef-d'œuvre aux grandes personnes et je leur ai demandé si mon dessin leur faisait peur.",
+            "en": "I showed my masterpiece to the grown-ups, and asked them whether the drawing frightened them."
+        },
+        {
+            "id": 6,
+            "lumina": "Liro na fiko pa Mina: 'Keli razo la kapa na timi masa?'",
+            "fr": "Elles m'ont répondu : « Pourquoi un chapeau ferait-il peur ? »",
+            "en": "But they answered: 'Frighten? Why should anyone be frightened by a hat?'"
+        },
+        {
+            "id": 7,
+            "lumina": "La safo pa Mina ne na fisi la kapa. Lina na fisi la kafa kofa keli na kidi la kafa kabo.",
+            "fr": "Mon dessin ne représentait pas un chapeau. Il représentait un serpent boa qui digérait un éléphant.",
+            "en": "My drawing was not a picture of a hat. It was a picture of a boa constrictor digesting an elephant."
+        },
+        {
+            "id": 8,
+            "lumina": "Tali Mina na kisi la safo pa kiso pa la kafa kofa, pa la masa ro duru piko. Liro debi faza ro kada tota. La safo pani pa Mina na shili toli:",
+            "fr": "J'ai alors dessiné l'intérieur du serpent boa, afin que les grandes personnes puissent comprendre. Elles ont toujours besoin d'explications. Mon dessin numéro 2 était comme ça :",
+            "en": "But since the grown-ups were not able to understand it, I made another drawing: I drew the inside of a boa constrictor, so that the grown-ups could see it clearly. They always need to have things explained. My Drawing Number Two looked like this:"
+        },
+        {
+            "id": 9,
+            "lumina": "La masa ro duru na fidi pa Mina: 'Ta ne kisi la safo ro pa la kafa kofa kiso o pofo, ve ta pishi pa la gotu, la foro, la pilo ve la fito.'",
+            "fr": "Les grandes personnes m'ont conseillé de laisser de côté les dessins de serpents boas ouverts ou fermés, et de m'intéresser plutôt à la géographie, à l'histoire, au calcul et à la grammaire.",
+            "en": "The grown-ups' response, this time, was to advise me to lay aside my drawings of boa constrictors, whether from the inside or the outside, and devote myself instead to geography, history, arithmetic, and grammar."
+        },
+        {
+            "id": 10,
+            "lumina": "Tali Mina na hlupu, ko pase tara, la jobe sulo pa masa pa safo.",
+            "fr": "C'est ainsi que j'ai abandonné, à l'âge de six ans, une magnifique carrière de peintre.",
+            "en": "That is why, at the age of six, I gave up what might have been a magnificent career as a painter."
+        },
+        {
+            "id": 11,
+            "lumina": "Mina na shili hlupu ko la hlusu pa la safo pana ve la safo pani pa Mina.",
+            "fr": "J'avais été découragé par l'insuccès de mon dessin numéro 1 et de mon dessin numéro 2.",
+            "en": "I had been disheartened by the failure of my Drawing Number One and my Drawing Number Two."
+        },
+        {
+            "id": 12,
+            "lumina": "La masa ro duru ne piko hano seno, ve to shili disu pa la mito ro pa fidi faza ro kada tota.",
+            "fr": "Les grandes personnes ne comprennent jamais rien toutes seules, et c'est fatigant, pour les enfants, de toujours et toujours leur donner des explications.",
+            "en": "Grown-ups never understand anything by themselves, and it is tiresome for children to be always and forever explaining things to them."
+        },
+        {
+            "id": 13,
+            "lumina": "Tali Mina na zhma la jobe pino, ve Mina na moti pa miva la lvo ro.",
+            "fr": "J'ai donc dû choisir un autre métier et j'ai appris à piloter des avions.",
+            "en": "So then I chose another profession, and learned to pilot airplanes."
+        },
+        {
+            "id": 14,
+            "lumina": "Mina na voli ko la gabo tota. Ve la gotu na misi Mina purufi.",
+            "fr": "J'ai volé un peu partout dans le monde. Et la géographie, c'est exact, m'a beaucoup servi.",
+            "en": "I have flown a little over all parts of the world; and it is true that geography has been very useful, to me."
+        },
+        {
+            "id": 15,
+            "lumina": "Mina na shaka sifi la Chine fa la Arizona ko la sifi pana. To shili sulo kada masa shili kupu ko la taso.",
+            "fr": "Je savais reconnaître, du premier coup d'œil, la Chine de l'Arizona. C'est très utile, si l'on est égaré pendant la nuit.",
+            "en": "At a glance I could distinguish China from Arizona. If one gets lost in the night, such knowledge is valuable."
+        },
+        {
+            "id": 16,
+            "lumina": "Mina na shili ko la dma pa Mina kabufi ko la masa ro duru.",
+            "fr": "J'ai ainsi eu, au cours de ma vie, des tas de contacts avec des tas de gens sérieux.",
+            "en": "In the course of this life I have had a great many encounters with a great many people who have been concerned with matters of consequence."
+        },
+        {
+            "id": 17,
+            "lumina": "Mina na dma kabufi ko la masa ro duru. Mina na sifi Liro kufi. To ne na kisi sulo la pishi pa Mina.",
+            "fr": "J'ai beaucoup vécu chez les grandes personnes. Je les ai vues de très près. Ça n'a pas trop amélioré mon opinion.",
+            "en": "I have lived a great deal among grown-ups. I have seen them intimately, close at hand. And that hasn't much improved my opinion of them."
+        },
+        {
+            "id": 18,
+            "lumina": "Kada Mina na timo la masa keli na shili kogu, Mina na kisi la proba ko la safo pana keli Mina na dma kada tota.",
+            "fr": "Quand j'en rencontrais une qui me paraissait un peu lucide, je faisais l'expérience sur elle de mon dessin numéro 1 que j'ai toujours conservé.",
+            "en": "Whenever I met one of them who seemed to me at all clear-sighted, I tried the experiment of showing him my Drawing Number One, which I have always kept."
+        },
+        {
+            "id": 19,
+            "lumina": "Mina na zhivi shaka ma Lina shili piko purufi. Vegeta Lina na fiko kada tota: 'To shili kapa.'",
+            "fr": "Je voulais savoir si elle était vraiment compréhensive. Mais toujours elle me répondait : « C'est un chapeau. »",
+            "en": "I would try to find out, so, if this was a person of true understanding. But whoever it was, he, or she, would always say: 'That is a hat.'"
+        },
+        {
+            "id": 20,
+            "lumina": "Tali Mina ne na fidi pa Lina ko la kafa kofa, o la gafo zuru, o la gta ro.",
+            "fr": "Alors je ne lui parlais ni de serpents boas, ni de forêts vierges, ni d'étoiles.",
+            "en": "Then I would never talk to that person about boa constrictors, or primeval forests, or stars."
+        },
+        {
+            "id": 21,
+            "lumina": "Mina na lifi pa la loko pa Lina. Mina na fidi pa Lina ko la jgo, la jfo, la mpo ve la jra.",
+            "fr": "Je me mettais à sa portée. Je lui parlais de bridge, de golf, de politique et de cravates.",
+            "en": "I would bring myself down to his level. I would talk to him about bridge, and golf, and politics, and neckties."
+        },
+        {
+            "id": 22,
+            "lumina": "Ve la masa duru na shili zelu kabufi pa shaka la masa razo toli.",
+            "fr": "Et la grande personne était bien contente de connaître un homme aussi raisonnable.",
+            "en": "And the grown-up would be greatly pleased to have met such a sensible man."
+        }
+    ]
+}
+
+def main():
+    target_path = ROOT_DIR / "data" / "petit_prince.json"
+    with open(target_path, "w", encoding="utf-8") as f:
+        json.dump(PETIT_PRINCE_CHAPTER_1, f, ensure_ascii=False, indent=2)
+    print(f"Saved {target_path} with {len(PETIT_PRINCE_CHAPTER_1['sentences'])} complete sentences.")
+
+if __name__ == "__main__":
+    main()

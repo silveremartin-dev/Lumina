@@ -1,0 +1,326 @@
+"""Generator for Expansion Part 5: Communication, social interactions, city, health, states.
+Picks collision-free slots systematically.
+"""
+
+import sys
+from pathlib import Path
+ROOT_DIR = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT_DIR))
+
+from scripts.baseline_data import BASELINE_DATA
+import re
+
+CONSONANTS = ['t', 'd', 'k', 'g', 'p', 'b', 's', 'z', 'm', 'n', 'f', 'v', 'l', 'r', 'sh', 'zh', 'j', 'ch', 'h']
+VOWELS = ['a', 'e', 'i', 'o', 'u']
+
+# 1. Collect all currently used keys across all family files + part 4
+from scripts.families_domain_t_d import FAMILIES_T_D
+from scripts.families_domain_k_g import FAMILIES_K_G
+from scripts.families_domain_p_b import FAMILIES_P_B
+from scripts.families_domain_s_z import FAMILIES_S_Z
+from scripts.families_domain_m_n import FAMILIES_M_N
+from scripts.families_domain_f_v import FAMILIES_F_V
+from scripts.families_domain_l_r import FAMILIES_L_R
+from scripts.families_domain_sh_zh import FAMILIES_SH_ZH
+from scripts.families_domain_j_ch import FAMILIES_J_CH
+from scripts.families_domain_h import FAMILIES_H
+from scripts.families_expansion import FAMILIES_EXPANSION
+from scripts.families_expansion_part2 import FAMILIES_EXPANSION_PART2
+from scripts.families_expansion_part3 import FAMILIES_EXPANSION_PART3
+from scripts.families_expansion_part4 import FAMILIES_EXPANSION_PART4
+
+used_keys = set()
+for fam_list in [
+    FAMILIES_T_D, FAMILIES_K_G, FAMILIES_P_B, FAMILIES_S_Z, FAMILIES_M_N,
+    FAMILIES_F_V, FAMILIES_L_R, FAMILIES_SH_ZH, FAMILIES_J_CH, FAMILIES_H,
+    FAMILIES_EXPANSION, FAMILIES_EXPANSION_PART2, FAMILIES_EXPANSION_PART3,
+    FAMILIES_EXPANSION_PART4
+]:
+    for fam in fam_list:
+        used_keys.add((fam[0].lower(), fam[1].lower(), fam[2].lower()))
+
+for r in BASELINE_DATA['roots']:
+    w = r['word'].lower()
+    m = re.match(r'^(sh|zh|ch|[a-z])([aeiou])(sh|zh|ch|[a-z])([aeiou])$', w)
+    if m:
+        used_keys.add((m.group(1), m.group(3), m.group(4)))
+
+print(f"Currently used keys (including Part 4): {len(used_keys)}")
+
+def allocate_slot(c1_preferred, c1_alt=None):
+    for c1 in [c1_preferred] + ([c1_alt] if c1_alt else []):
+        for c2 in CONSONANTS:
+            for v2 in VOWELS:
+                key = (c1, c2, v2)
+                if key not in used_keys:
+                    used_keys.add(key)
+                    return key
+    raise RuntimeError(f"Exhausted slots for {c1_preferred}")
+
+RAW_FAMILIES_PART5 = [
+    # --- COMMUNICATION & PAROLE ---
+    ("f", "v", "Communication / Parole & Conversation", {
+        'a': ("conversation, dialogue, entretien, causette", "conversation, dialogue, talk, chat", "Échange verbal entre personnes"),
+        'i': ("converser, dialoguer, causer, échanger", "to converse, to chat, to talk, to converse", "Parler ensemble"),
+        'u': ("loquace, bavard, causeur, communicatif", "talkative, conversational, chatty", "Enclin à la discussion"),
+        'o': ("salon de conversation, forum de discussion", "chat room, conversation lounge", "Lieu où l'on converse"),
+        'e': ("interlocuteur, causeur, discuteur", "speaker, conversationalist", "Personne qui converse"),
+    }),
+    ("f", "v", "Communication / Son & Murmure", {
+        'a': ("murmure, chuchotement, souffle verbal", "whisper, murmur, hushed tone", "Parole à voix très basse"),
+        'i': ("murmurer, chuchoter, susurrer", "to whisper, to murmur, to sussurate", "Parler très bas à l'oreille"),
+        'u': ("chuchoté, murmurant, feutré, à mi-voix", "whispered, whispering, hushed", "À voix basse"),
+        'o': ("coin des confidences, alcôve", "whispering alcove", "Lieu où l'on chuchote"),
+        'e': ("chuchoteur, confesseur", "whisperer", "Personne qui chuchote"),
+    }),
+    ("f", "v", "Communication / Émission & Cri", {
+        'a': ("cri, clameur, hurlement, exclamation", "shout, yell, scream, outcry, clamor", "Émission vocale forte et soudaine"),
+        'i': ("crier, hurler, vociférer, clamer", "to shout, to yell, to scream, to cry out", "Pousser un grand cri"),
+        'u': ("criard, hurlant, retentissant, vociférant", "shouting, loud, screaming", "Poussant des cris"),
+        'o': ("arène des cris, tribune", "screaming arena, shouting stands", "Lieu des clameurs"),
+        'e': ("crieur public, hurleur", "town crier, shouter", "Personne qui crie"),
+    }),
+    ("f", "v", "Communication / Question & Interrogation", {
+        'a': ("question, interrogation, demande, énigme", "question, query, inquiry, riddle", "Demande faite pour savoir"),
+        'i': ("demander, interroger, questionner, sonder", "to ask, to question, to inquire, to query", "Poser une question"),
+        'u': ("interrogatif, curieux, questionneur", "inquisitive, questioning, querying", "Qui pose des questions"),
+        'o': ("guichet des demandes, bureau des questions", "inquiry desk, helpdesk", "Lieu des questions"),
+        'e': ("questionneur, interrogateur, enquêteur", "questioner, inquirer", "Personne qui pose les questions"),
+    }),
+    ("f", "v", "Communication / Réponse & Réplique", {
+        'a': ("réponse, réplique, solution, rétorque", "answer, reply, response, solution", "Ce qui résout une demande"),
+        'i': ("répondre, répliquer, rétorquer, résoudre", "to answer, to reply, to respond, to solve", "Donner suite à une question"),
+        'u': ("répondant, résolu, explicatif", "answering, responsive, replied", "Qui apporte la réponse"),
+        'o': ("livre des solutions, tableau des réponses", "answer key, solution board", "Lieu des réponses"),
+        'e': ("répondant, solutionneur, répondeur", "responder, answerer", "Personne qui répond"),
+    }),
+    ("f", "v", "Communication / Ordre & Mandat", {
+        'a': ("ordre, commandement, consigne, décret", "order, command, injunction, decree", "Instruction formelle d'agir"),
+        'i': ("ordonner, commander, décréter, intimer", "to order, to command, to decree", "Donner l'ordre"),
+        'u': ("impératif, ordonné, directif", "imperative, commanding, ordered", "Ayant valeur d'ordre"),
+        'o': ("poste de commandement, quartier général", "command post, headquarters", "Lieu du commandement"),
+        'e': ("commandant, ordonnateur, chef", "commander, leader", "Personne qui ordonne"),
+    }),
+    ("f", "v", "Communication / Promesse & Engagement", {
+        'a': ("promesse, engagement, serment, parole donnée", "promise, pledge, vow, commitment", "Parole engageant l'avenir"),
+        'i': ("promettre, s'engager, jurer, faire serment", "to promise, to pledge, to vow", "Engager sa parole"),
+        'u': ("promis, engagé, juré, fidèle au serment", "promised, pledged, vowed", "Lié par la promesse"),
+        'o': ("autel des serments, temple de fidélité", "altar of vows, shrine of fidelity", "Lieu des promesses"),
+        'e': ("personne engagée, garant", "promiser, guarantor", "Personne qui promet"),
+    }),
+
+    # --- ÉMOTIONS & SENTIMENTS HUMAINS ---
+    ("s", "z", "Sensation / Émotion & Joie (Rire)", {
+        'a': ("rire, éclat de rire, gaieté, hilarité", "laughter, laugh, chuckle, mirth", "Manifestation sonore de la gaieté"),
+        'i': ("rire, rigoler, pouffer, éclater de rire", "to laugh, to chuckle, to giggle", "Exprimer sa joie en riant"),
+        'u': ("rieur, joyeux, hilare, comique", "laughing, mirthful, joyful, funny", "Plein de rire"),
+        'o': ("cercle des rires, cabaret comique", "comedy club, laughing circle", "Lieu du rire"),
+        'e': ("rieur, farceur, comique", "laugher, joker, comedian", "Personne qui rit"),
+    }),
+    ("s", "z", "Sensation / Émotion & Tristesse (Pleurer)", {
+        'a': ("pleur, larme, sanglot, deuil, tristesse", "tear, weep, crying, sobbing, sorrow", "Manifestation de la tristesse"),
+        'i': ("pleurer, sangloter, verser des larmes", "to cry, to weep, to sob, to mourn", "Exprimer son chagrin"),
+        'u': ("éploré, en larmes, triste, larmoyant", "tearful, crying, weeping, sorrowful", "Qui verse des larmes"),
+        'o': ("mur des lamentations, chambre de deuil", "mourning chamber, crying corner", "Lieu du chagrin"),
+        'e': ("personne en deuil, pleureur", "mourner, weeper", "Personne qui pleure"),
+    }),
+    ("s", "z", "Sensation / Émotion & Sourire", {
+        'a': ("sourire, grâce, amabilité, bienveillance", "smile, grin, pleasantness, graciousness", "Expression douce du visage"),
+        'i': ("sourire, sourire à la vie, accueillir", "to smile, to grin, to beam", "Faire un sourire"),
+        'u': ("souriant, radieux, avenant, aimable", "smiling, beaming, friendly, gracious", "Au visage souriant"),
+        'o': ("terrasse souriante, salon d'accueil", "welcome lounge, sunny terrace", "Lieu des sourires"),
+        'e': ("être souriant, hôte amical", "smiler, welcoming host", "Personne souriante"),
+    }),
+    ("n", "m", "Humain / Relation & Amour / Affection", {
+        'a': ("amour, affection, tendresse, attachement", "love, affection, fondness, endearment", "Sentiment profond d'attachement"),
+        'i': ("aimer, chérir, adorer, porter affection", "to love, to cherish, to adore", "Avoir un amour profond pour"),
+        'u': ("aimant, tendre, affectueux, amoureux", "loving, affectionate, fond, in love", "Rempli d'amour"),
+        'o': ("foyer d'amour, nid affectif", "haven of love, sweet home", "Lieu de l'amour"),
+        'e': ("amoureux, être cher, amant, bien-aimé", "lover, beloved, loved one", "Personne qui aime"),
+    }),
+    ("n", "m", "Humain / Relation & Pardon", {
+        'a': ("pardon, grâce, rémission, absolution", "forgiveness, pardon, mercy, absolution", "Effacement généreux d'une faute"),
+        'i': ("pardonner, faire grâce, excuser, absoudre", "to forgive, to pardon, to excuse", "Accorder son pardon"),
+        'u': ("pardonnant, clément, miséricordieux", "forgiving, merciful, clement", "Prêt à pardonner"),
+        'o': ("tribunal de clémence, sanctuaire du pardon", "sanctuary of mercy", "Lieu du pardon"),
+        'e': ("bienfaiteur clément, donneur de grâce", "forgiver, pardoner", "Personne qui pardonne"),
+    }),
+
+    # --- ACTIONS PHYSIQUES DE REPOS ET MOUVEMENT ---
+    ("m", "n", "Humain / Sommeil & Repos", {
+        'a': ("sommeil, nuit de sommeil, assoupissement", "sleep, slumber, rest, snooze", "État de repos de l'organisme"),
+        'i': ("dormir, sommeiller, s'assoupir, reposer", "to sleep, to slumber, to snooze, to rest", "Être endormi"),
+        'u': ("endormi, assoupi, somnolent, au repos", "asleep, sleeping, resting, dormant", "Plongé dans le sommeil"),
+        'o': ("chambre de repos, dortoir paisible", "dormitory, quiet bedroom", "Lieu du sommeil"),
+        'e': ("dormeur, somnambule", "sleeper", "Personne qui dort"),
+    }),
+    ("m", "n", "Humain / Sommeil & Réveil", {
+        'a': ("réveil, éveil, aube des sens, alerte", "awakening, waking up, arousal", "Sortie du sommeil"),
+        'i': ("se réveiller, s'éveiller, émerger du sommeil", "to wake up, to awaken, to awake", "Quitter le sommeil"),
+        'u': ("éveillé, alerte, bien réveillé, vigilant", "awake, alert, wakeful, conscious", "Qui n'est plus endormi"),
+        'o': ("salle du matin, cloche d'éveil", "morning hall, wakeup chime", "Lieu de l'éveil"),
+        'e': ("matinal, personne éveillée", "early riser, waker", "Personne éveillée"),
+    }),
+    ("l", "r", "Mouvement / Kinetics & Nage", {
+        'a': ("nage, natation, baignade, brasse", "swimming, swim, bathe", "Locomotion dans l'eau"),
+        'i': ("nager, se baigner, flotter, brasser", "to swim, to bathe, to paddle", "Se déplacer dans l'eau"),
+        'u': ("nageur, aquatique, flottant", "swimming, aquatic, floating", "Qui sait nager"),
+        'o': ("bassin de nage, piscine, rivière calme", "swimming pool, swimming basin", "Lieu de la nage"),
+        'e': ("nageur, baigneur", "swimmer, bather", "Personne qui nage"),
+    }),
+    ("l", "r", "Mouvement / Kinetics & Vol (Aérien)", {
+        'a': ("vol, envol, planéité aérienne, trajectoire céleste", "flight, flying, soar, glide", "Déplacement dans l'air"),
+        'i': ("voler, planer, s'envoler, voguer dans l'air", "to fly, to soar, to glide, to take wing", "Se déplacer dans l'air"),
+        'u': ("volant, aérien, ailé, planant", "flying, winged, aerial, soaring", "Capable de voler"),
+        'o': ("piste d'envol, couloir aérien, ciel ouvert", "airfield, flight corridor, open sky", "Espace de vol"),
+        'e': ("aviateur, oiseau volant, pilote", "flyer, pilot, winged flyer", "Être qui vole"),
+    }),
+    ("l", "r", "Mouvement / Kinetics & Saut", {
+        'a': ("saut, bond, enjambée, élan", "jump, leap, hop, bound, spring", "Élévation brusque du sol"),
+        'i': ("sauter, bondir, franchir d'un saut", "to jump, to leap, to hop, to bound", "Quitter le sol par impulsion"),
+        'u': ("bondissant, sauteur, agile en saut", "jumping, leaping, bouncy", "Prêt à bondir"),
+        'o': ("tremplin de saut, fossé de saut", "jumping board, leap ditch", "Lieu du saut"),
+        'e': ("sauteur, acrobate au bond", "jumper, leaper", "Personne qui saute"),
+    }),
+
+    # --- URBANISME & CADRE DE VIE ---
+    ("k", "g", "Espace / Ville & Cité", {
+        'a': ("ville, cité, agglomération, métropole", "city, town, urban center, metropolis", "Grand centre urbain habité"),
+        'i': ("urbaniser, vivre en ville, habiter la cité", "to urbanize, to live in the city", "Vivre en milieu urbain"),
+        'u': ("urbain, citadin, municipal, civique", "urban, civic, city-like, municipal", "Relatif à la ville"),
+        'o': ("centre-ville, hôtel de ville, agora urbaine", "city center, downtown, city hall", "Cœur de la ville"),
+        'e': ("citadin, habitant de la ville, citoyen urbain", "city dweller, townsman, citizen", "Habitant de la ville"),
+    }),
+    ("k", "g", "Espace / Ville & Village", {
+        'a': ("village, bourg, hameau, bourgade", "village, hamlet, settlement, borough", "Petite communauté rurale"),
+        'i': ("villager, vivre au village, faire communauté", "to live in village, to settle", "Vivre dans un village"),
+        'u': ("villageois, champêtre, rural, de bourg", "village, rural, rustic, small-town", "Propre au village"),
+        'o': ("place du village, clocher du bourg", "village square, green, churchyard", "Lieu central du village"),
+        'e': ("villageois, habitant du bourg", "villager, country dweller", "Habitant du village"),
+    }),
+    ("k", "g", "Espace / Ville & Rue", {
+        'a': ("rue, avenue, boulevard, ruelle, chaussée", "street, avenue, lane, alley, boulevard", "Voie bordée d'habitations en ville"),
+        'i': ("arpenter la rue, descendre la rue, flâner", "to walk the street, to stroll down street", "Suivre la rue"),
+        'u': ("de rue, urbain de trottoir, pavé", "street, curbside, paved", "Propre à la rue"),
+        'o': ("trottoir, carrefour de rues", "sidewalk, street intersection", "Espace de la rue"),
+        'e': ("passant de la rue, flâneur de trottoir", "passerby, street walker", "Personne dans la rue"),
+    }),
+    ("k", "g", "Espace / Bâtiment & Maison", {
+        'a': ("maison, foyer, demeure, logis, domicile", "house, home, dwelling, residence, homestead", "Bâtiment d'habitation familial"),
+        'i': ("loger, habiter en maison, fonder son foyer", "to lodge, to reside, to make a home", "Occuper une maison"),
+        'u': ("domestique, familial, de maison, douillet", "homely, domestic, residential", "Propre à la maison"),
+        'o': ("quartier résidentiel, lotissement", "residential zone, homestead block", "Ensemble de maisons"),
+        'e': ("maître de maison, habitant du logis", "householder, homeowner", "Habitant de la maison"),
+    }),
+    ("k", "g", "Espace / Bâtiment & École", {
+        'a': ("école, académie, collège, institut d'études", "school, academy, college, study institute", "Établissement d'enseignement"),
+        'i': ("scolariser, instruire à l'école, étudier en classe", "to school, to teach, to attend class", "Prendre part à l'enseignement"),
+        'u': ("scolaire, académique, d'école", "scholastic, academic, school", "Relatif à l'école"),
+        'o': ("salle de classe, cour d'école", "classroom, schoolyard", "Lieu de l'école"),
+        'e': ("instituteur, enseignant, maître d'école", "teacher, schoolmaster, instructor", "Personne qui enseigne"),
+    }),
+    ("k", "g", "Espace / Santé & Hôpital", {
+        'a': ("hôpital, dispensaire, clinique, lazaret", "hospital, clinic, infirmary, dispensary", "Établissement de soins médicaux"),
+        'i': ("hospitaliser, soigner à la clinique, traiter", "to hospitalize, to treat medically", "Donner des soins médicaux"),
+        'u': ("hospitalier, médical, clinique", "hospital, clinical, medical", "Relatif à l'hôpital"),
+        'o': ("salle de soins, pavillon hospitalier", "ward, treatment wing", "Lieu de soins"),
+        'e': ("médecin, infirmier, soignant", "doctor, nurse, clinician", "Praticien de santé"),
+    }),
+    ("k", "g", "Espace / Repas & Restaurant", {
+        'a': ("restaurant, auberge, bistrot, taverne", "restaurant, eatery, diner, bistro, tavern", "Établissement servant des repas"),
+        'i': ("dîner au restaurant, se restaurer, banqueter", "to dine out, to eat at restaurant", "Prendre repas au restaurant"),
+        'u': ("de restaurant, gastronomique, de table", "restaurant, dining, culinary", "Propre au restaurant"),
+        'o': ("salle de restaurant, terrasse de bistrot", "dining room, bistro terrace", "Lieu où l'on dîne"),
+        'e': ("restaurateur, chef de cuisine, serveur", "restaurateur, waiter, host", "Personne qui sert les repas"),
+    }),
+
+    # --- ÉTATS PHYSIQUES & BIEN-ÊTRE ---
+    ("s", "z", "Sensation / Vigueur & Force", {
+        'a': ("force, vigueur, robustesse, puissance physique", "strength, vigor, robustness, physical power", "Capacité physique intense"),
+        'i': ("fortifier, raffermir, agir avec force", "to strengthen, to invigorate, to exert force", "Donner de la force"),
+        'u': ("fort, vigoureux, robuste, solide, puissant", "strong, robust, sturdy, powerful, mighty", "Plein de force"),
+        'o': ("gymnase de force, salle d'entraînement", "weight gym, strength hall", "Lieu où l'on cultive la force"),
+        'e': ("homme fort, hercule, athlète robuste", "strongman, robust athlete", "Être fort"),
+    }),
+    ("s", "z", "Sensation / Vigueur & Faiblesse", {
+        'a': ("faiblesse, fragilité, débilité, vulnérabilité", "weakness, frailty, feebleness, vulnerability", "Manque de force physique"),
+        'i': ("faiblir, s'affaiblir, chanceler", "to weaken, to grow frail, to falter", "Perdre sa force"),
+        'u': ("faible, fragile, chétif, délicat, débile", "weak, frail, delicate, feeble", "Qui manque de force"),
+        'o': ("asile de repos, coin des convalescents", "convalescent ward, fragile nook", "Lieu des êtres faibles"),
+        'e': ("être fragile, convalescent", "frail soul, convalescent", "Être faible"),
+    }),
+    ("s", "z", "Sensation / Santé & Maladie", {
+        'a': ("maladie, affection, fièvre, mal, malaise", "illness, disease, sickness, ailment", "Altération de la santé"),
+        'i': ("tomber malade, souffrir d'un mal, fiévrer", "to fall ill, to sicken, to suffer ailment", "Avoir la maladie"),
+        'u': ("malade, souffrant, indisposé, fiévreux", "sick, ill, unwell, ailing, diseased", "Atteint par la maladie"),
+        'o': ("chambre du malade, lazaret", "sickroom, infirmary bed", "Lieu du malade"),
+        'e': ("malade, patient souffrant", "patient, sick person", "Personne malade"),
+    }),
+    ("s", "z", "Sensation / Santé & Guérison", {
+        'a': ("santé, guérison, rétablissement, plénitude", "health, healing, recovery, wellness", "État d'équilibre et de vigueur"),
+        'i': ("guérir, recouvrer la santé, assainir", "to heal, to recover, to cure, to sound", "Rétablir la santé"),
+        'u': ("sain, guéri, en bonne santé, gaillard", "healthy, healed, sound, wholesome, well", "En pleine santé"),
+        'o': ("station thermale, hâvre de santé", "spa, wellness retreat", "Lieu de santé"),
+        'e': ("être bien portant, médecin guérisseur", "healer, healthy individual", "Personne guérie"),
+    }),
+    ("s", "z", "Sensation / Fatigue & Sommeil", {
+        'a': ("fatigue, lassitude, épuisement, surmenage", "tiredness, fatigue, weariness, exhaustion", "Besoin de repos"),
+        'i': ("fatiguer, s'épuiser, se lasser, peiner", "to tire, to grow weary, to exhaust", "Ressentir la fatigue"),
+        'u': ("fatigué, las, épuisé, harassé, éreinté", "tired, weary, exhausted, worn out", "Ayant besoin de repos"),
+        'o': ("couchette de repos, banc de halte", "resting cot, waypoint bench", "Lieu où l'on repose la fatigue"),
+        'e': ("travailleur fatigué, pèlerin las", "tired worker, weary soul", "Personne fatiguée"),
+    }),
+    ("s", "z", "Sensation / Paix & Calme", {
+        'a': ("calme, paix, tranquillité, sérénité, quiétude", "calm, peace, tranquility, quietude", "Absence de trouble"),
+        'i': ("calmer, tranquilliser, apaiser, pacifier", "to calm, to pacify, to quiet, to soothe", "Rendre calme"),
+        'u': ("calme, paisible, tranquille, serein, posé", "calm, peaceful, quiet, tranquil, serene", "Dénué de trouble"),
+        'o': ("havre de paix, oasis tranquille", "haven of peace, quiet sanctuary", "Lieu calme"),
+        'e': ("être serein, sage pacifique", "peaceful soul, peacemaker", "Personne calme"),
+    }),
+    ("s", "z", "Sensation / Bruit & Vacarme", {
+        'a': ("bruit, vacarme, fracas, vacarme sonore", "noise, racket, clamor, din, roar", "Sons intenses et désordonnés"),
+        'i': ("bruire, faire du bruit, vrombir, gronder", "to make noise, to roar, to clang", "Produire du bruit"),
+        'u': ("bruyant, tapageur, sonore, retentissant", "noisy, loud, clamorous, blaring", "Qui fait beaucoup de bruit"),
+        'o': ("chantier bruyant, place assourdissante", "noisy square, echo chamber", "Lieu bruyant"),
+        'e': ("tapageur, artisan du bruit", "noisemaker", "Personne bruyante"),
+    }),
+    ("p", "b", "Quantité / Solidité & Dureté", {
+        'a': ("dureté, rigidité, fermeté, solidité minérale", "hardness, rigidity, toughness, firmness", "Résistance à la déformation"),
+        'i': ("durcir, raffermir, rendre rigide", "to harden, to toughen, to solidify", "Rendre dur"),
+        'u': ("dur, rigide, ferme, solide, résistant", "hard, tough, rigid, firm, solid", "Difficile à déformer"),
+        'o': ("enclume, bloc de granit", "anvil, granite block", "Support très dur"),
+        'e': ("forgeron, tailleur de pierre dure", "blacksmith, stonemason", "Personne travaillant le dur"),
+    }),
+    ("p", "b", "Quantité / Souplesse & Douceur", {
+        'a': ("souplesse, mollesse, douceur tactile, élasticité", "softness, flexibility, suppleness, give", "Facilité à céder à la pression"),
+        'i': ("assouplir, amollir, adoucir le toucher", "to soften, to make flexible, to supple", "Rendre mou ou souple"),
+        'u': ("mou, molle, souple, tendre, élastique", "soft, tender, flexible, supple, yielding", "Cédant à la pression"),
+        'o': ("coussin de duvet, matelas souple", "feather cushion, soft mattress", "Lieu moelleux"),
+        'e': ("artisan du cuir souple, plumassier", "tanner, cushion maker", "Personne travaillant le souple"),
+    }),
+]
+
+assigned_part5 = []
+for pref_c1, alt_c1, dom, roles in RAW_FAMILIES_PART5:
+    c1, c2, v2 = allocate_slot(pref_c1, alt_c1)
+    assigned_part5.append((c1, c2, v2, dom, roles))
+    print(f"Allocated: ({c1}, {c2}, {v2}) for {dom}")
+
+print(f"\nSuccessfully allocated {len(assigned_part5)} new families in Part 5!")
+
+def serialize_family(fam):
+    c1, c2, v2, dom, roles = fam
+    lines = [f"    ('{c1}', '{c2}', '{v2}', {repr(dom)}, {{"]
+    for role_v in ['a', 'i', 'u', 'o', 'e']:
+        if role_v in roles:
+            fr, en, sem = roles[role_v]
+            lines.append(f"        '{role_v}': ({repr(fr)}, {repr(en)}, {repr(sem)}),")
+    lines.append("    }),")
+    return "\n".join(lines)
+
+out_path = ROOT_DIR / "scripts" / "families_expansion_part5.py"
+header = '"""Lumina Semantic Families Expansion Part 5: Communication, social interactions, city, health, states.\nAuto-generated and collision-free C1-V1-C2-V2 matrix.\n"""\n\nFAMILIES_EXPANSION_PART5 = [\n'
+body = "\n".join(serialize_family(fam) for fam in assigned_part5)
+footer = "\n]\n"
+out_path.write_text(header + body + footer, encoding="utf-8")
+print(f"Wrote {len(assigned_part5)} families to scripts/families_expansion_part5.py.")

@@ -1,6 +1,7 @@
 """Interface en ligne de commande (CLI) pour Lumina."""
 
 import sys
+import re
 import json
 import argparse
 from pathlib import Path
@@ -44,9 +45,9 @@ def main():
     p_analyze.add_argument("text", help="Texte en Lumina à analyser")
 
     # Commande 'translate'
-    p_trans = subparsers.add_parser("translate", help="Traduit entre Lumina et Français")
+    p_trans = subparsers.add_parser("translate", help="Traduit entre Lumina, Français et Anglais")
     p_trans.add_argument("text", help="Texte source")
-    p_trans.add_argument("--to", choices=["fr", "lumina"], default="fr", help="Langue cible (défaut: fr)")
+    p_trans.add_argument("--to", choices=["fr", "lumina", "en", "auto"], default="auto", help="Langue cible (défaut: auto-détection)")
 
     # Commande 'speak'
     p_speak = subparsers.add_parser("speak", help="Prononce vocalement une phrase en Lumina")
@@ -60,7 +61,7 @@ def main():
     # Commande 'listen' (Speech-to-Text)
     p_stt = subparsers.add_parser("listen", help="Écoute au microphone (STT) et traduit automatiquement")
     p_stt.add_argument("--seconds", type=int, default=5, help="Durée d'écoute en secondes (défaut: 5)")
-    p_stt.add_argument("--to", choices=["lumina", "fr"], default="lumina", help="Langue de traduction cible (défaut: lumina)")
+    p_stt.add_argument("--to", choices=["lumina", "fr", "en"], default="lumina", help="Langue de traduction cible (défaut: lumina)")
 
     # Commande 'wordgen'
     p_gen = subparsers.add_parser("wordgen", help="Forge un mot Lumina selon la matrice C1V1C2V2")
@@ -70,7 +71,7 @@ def main():
 
     # Commande 'prince'
     p_prince = subparsers.add_parser("prince", help="Affiche le texte du Petit Prince bilingue aligné")
-    p_prince.add_argument("--id", type=int, default=None, help="Numéro de phrase spécifique (1-13)")
+    p_prince.add_argument("--id", type=int, default=None, help="Numéro de phrase spécifique (1-22)")
 
     args = parser.parse_args()
 
@@ -105,12 +106,45 @@ def main():
                     print(f"  Radical (C2V2) : {bd['c2v2']}")
 
     elif args.command == "translate":
-        if args.to == "fr":
+        target_lang = args.to
+        lower_text = args.text.lower()
+        en_indicators = ["hello", "hi", "how are you", "my name is", "the", "you", "i am", "we", "they", "is", "are", "what", "which", "where", "please", "thank you", "thanks", "goodbye"]
+        fr_indicators = ["bonjour", "salut", "merci", "comment", "ça", "est-ce", "je", "tu", "il", "elle", "nous", "vous", "les", "des", "une", "m'", "t'", "j'", "l'", "d'", "s'"]
+        lumina_indicators = ["mina", "tina", "miro", "tiro", "li", "na", "vo", "pe", "du", "ro", "ma", "ta", "shili", "sifi", "zelu", "fali", "fata", "fama", "nomi"]
+        
+        en_score = sum(1 for ind in en_indicators if re.search(r'\b' + re.escape(ind), lower_text))
+        fr_score = sum(1 for ind in fr_indicators if re.search(r'\b' + re.escape(ind), lower_text))
+        lumina_score = sum(1 for ind in lumina_indicators if re.search(r'\b' + re.escape(ind), lower_text))
+
+        if target_lang == "auto":
+            if en_score > fr_score and en_score > lumina_score:
+                target_lang = "lumina_from_en"
+            elif fr_score > lumina_score or any(k in lower_text for k in ["bonjour", "salut", "comment", "m'appelle", "je "]):
+                target_lang = "lumina"
+            else:
+                target_lang = "fr"
+        elif target_lang == "lumina":
+            if en_score > fr_score:
+                target_lang = "lumina_from_en"
+
+        if target_lang == "fr":
             res = translator.translate_lumina_to_fr(args.text)
             print(f"\n[Lumina -> FR]")
             print(f"Source : {res['source']}")
             print(f"Cible  : {res['target']}")
             print(f"Gloses : {' | '.join(res['glosses'])}")
+        elif target_lang == "en":
+            res = translator.translate_lumina_to_en(args.text)
+            print(f"\n[Lumina -> EN]")
+            print(f"Source : {res['source']}")
+            print(f"Cible  : {res['target']}")
+            print(f"Gloses : {' | '.join(res['glosses'])}")
+        elif target_lang == "lumina_from_en":
+            res = translator.translate_en_to_lumina(args.text)
+            print(f"\n[EN -> Lumina]")
+            print(f"Source : {res['source']}")
+            print(f"Cible  : {res['target']}")
+            print(f"IPA    : {tts.get_ipa(res['target'])}")
         else:
             res = translator.translate_fr_to_lumina(args.text)
             print(f"\n[FR -> Lumina]")
@@ -142,11 +176,19 @@ def main():
         else:
             print(f"\n[Texte reconnu (STT)] : \"{text}\"")
             if args.to == "lumina":
-                res = translator.translate_fr_to_lumina(text)
+                # Auto-détecter si le texte reconnu est en anglais ou en français
+                is_en = any(k in text.lower().split() for k in ["the", "is", "are", "you", "hello", "what", "my"])
+                if is_en:
+                    res = translator.translate_en_to_lumina(text)
+                else:
+                    res = translator.translate_fr_to_lumina(text)
                 print(f"[Traduction Lumina]   : {res['target']}")
                 print(f"[Phonétique IPA]      : {tts.get_ipa(res['target'])}")
                 print(f"\nPrononciation Lumina...")
                 tts.speak_powershell(res['target'])
+            elif args.to == "en":
+                res = translator.translate_lumina_to_en(text)
+                print(f"[Traduction Anglais]  : {res['target']}")
             else:
                 res = translator.translate_lumina_to_fr(text)
                 print(f"[Traduction Français] : {res['target']}")
